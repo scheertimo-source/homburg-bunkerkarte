@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8dc6562a9f623e43b7da8c56ef82b658 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+</head>
+<body>
+    
+    
+<div style="position:fixed;top:12px;left:55px;z-index:9999;background:rgba(18,18,20,.92);
+color:white;padding:12px 15px;border-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial;
+box-shadow:0 3px 16px rgba(0,0,0,.35);max-width:410px">
+<div style="font-size:19px;font-weight:700">Schlossberg Homburg</div>
+<div style="font-size:13px;margin-top:3px">Interaktive Karte mit echten Geodaten</div></div>
+    
+<div style="position:fixed;bottom:28px;right:12px;z-index:9999;background:rgba(255,255,255,.96);
+color:#111;padding:12px 14px;border-radius:12px;width:275px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial;
+box-shadow:0 3px 16px rgba(0,0,0,.3);font-size:13px">
+<b>Legende</b><br>
+<span style="color:#2ca25f;font-size:19px">●</span> offiziell belegt<br>
+<span style="color:#f4c20d;font-size:19px">◯</span> historisch erwähnt, nur Bereich<br>
+<span style="color:#d73027;font-size:19px">●</span> von euch beobachtet, unbestätigt<br>
+<span style="color:#4f83cc;font-size:19px">●</span> Orientierungspunkt
+<hr style="margin:8px 0;border:none;border-top:1px solid #ccc">
+Keine erfundenen Eingänge und keine gezeichneten Tunnelverläufe.
+</div>
+    
+            <div class="folium-map" id="map_8dc6562a9f623e43b7da8c56ef82b658" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8dc6562a9f623e43b7da8c56ef82b658 = L.map(
+                "map_8dc6562a9f623e43b7da8c56ef82b658",
+                {
+                    center: [49.3199, 7.353],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+
+            
+
+        
+    
+            var tile_layer_59f9b2188cebee18cbe787902f006597 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri, Maxar, Earthstar Geographics and the GIS User Community",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_59f9b2188cebee18cbe787902f006597.addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            var tile_layer_f2bdc21389d2aca336f563bc30cbfb5d = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap-Mitwirkende",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            var feature_group_f2d55035afccde70012746eb40d809ec = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_924337467c5ab685d07448ec48301bf3 = L.marker(
+                [49.31795, 7.35355],
+                {
+}
+            ).addTo(feature_group_f2d55035afccde70012746eb40d809ec);
+        
+    
+            var icon_36a5001ef72aa3123b584b14a512937a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7bff00e258733e798059b670d41ceac = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_b2daa619a9ddf1edc38bb21d204dde36 = $(`<div id="html_b2daa619a9ddf1edc38bb21d204dde36" style="width: 100.0%; height: 100.0%;"><b>Schlossberghöhlen</b><br><br>Offiziell belegtes Höhlensystem und Besucherbergwerk. Der moderne Abschnitt wurde 1952–1955 teilweise in bestehende Gänge eingebaut und war als Regierungsbunker vorgesehen.<br><br><a href='https://maps.apple.com/?ll=49.31795,7.35355&q=Schlossbergh%C3%B6hlen%20Homburg' target='_blank'>In Apple Karten öffnen</a></div>`)[0];
+                popup_b7bff00e258733e798059b670d41ceac.setContent(html_b2daa619a9ddf1edc38bb21d204dde36);
+            
+        
+
+        marker_924337467c5ab685d07448ec48301bf3.bindPopup(popup_b7bff00e258733e798059b670d41ceac)
+        ;
+
+        
+    
+    
+            marker_924337467c5ab685d07448ec48301bf3.bindTooltip(
+                `<div>
+                     Schlossberghöhlen – offiziell
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_924337467c5ab685d07448ec48301bf3.setIcon(icon_36a5001ef72aa3123b584b14a512937a);
+            
+    
+            feature_group_f2d55035afccde70012746eb40d809ec.addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            var feature_group_9479be83a252f70b0749071c5a70fd67 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_28cf69b740d865fecb907c4752be23f4 = L.circle(
+                [49.31975, 7.35198],
+                {"bubblingMouseEvents": true, "color": "#f4c20d", "dashArray": "8 6", "dashOffset": null, "fill": true, "fillColor": "#f4c20d", "fillOpacity": 0.16, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 85, "stroke": true, "weight": 4}
+            ).addTo(feature_group_9479be83a252f70b0749071c5a70fd67);
+        
+    
+        var popup_b9aa7652d8a153f80c2d213ff495d7c0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_79b0669da5ade61ff7f57955584a6ab9 = $(`<div id="html_79b0669da5ade61ff7f57955584a6ab9" style="width: 100.0%; height: 100.0%;"><b>Bunkeranlage am Ende der Lagerstraße</b><br><br>Die Stadt Homburg erwähnt diesen Bereich ausdrücklich historisch. Ein öffentlich bestätigter, punktgenauer Eingang ist jedoch nicht dokumentiert. Der Kreis zeigt deshalb nur einen Prüfbereich.<br><br><a href='https://maps.apple.com/?ll=49.31975,7.35198&q=Lagerstra%C3%9Fe%2074%20Homburg' target='_blank'>In Apple Karten öffnen</a></div>`)[0];
+                popup_b9aa7652d8a153f80c2d213ff495d7c0.setContent(html_79b0669da5ade61ff7f57955584a6ab9);
+            
+        
+
+        circle_28cf69b740d865fecb907c4752be23f4.bindPopup(popup_b9aa7652d8a153f80c2d213ff495d7c0)
+        ;
+
+        
+    
+    
+            circle_28cf69b740d865fecb907c4752be23f4.bindTooltip(
+                `<div>
+                     Lagerstraße – historisch erwähnter Bunkerbereich
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_67db1488bcf4ea90fe299af9fb22ff14 = L.circle(
+                [49.31915, 7.35355],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": "4 7", "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.07, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 240, "stroke": true, "weight": 2}
+            ).addTo(feature_group_9479be83a252f70b0749071c5a70fd67);
+        
+    
+        var popup_6f2e426e1c0d2fb25916c881430896b0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_12e1ad606905b45b2a0acfdaa4dcb814 = $(`<div id="html_12e1ad606905b45b2a0acfdaa4dcb814" style="width: 100.0%; height: 100.0%;"><b>Schlossberg-Komplex</b><br><br>Nur allgemeine Darstellungszone. Kein Grundriss und kein maßstabsgerechter Tunnelverlauf.</div>`)[0];
+                popup_6f2e426e1c0d2fb25916c881430896b0.setContent(html_12e1ad606905b45b2a0acfdaa4dcb814);
+            
+        
+
+        circle_67db1488bcf4ea90fe299af9fb22ff14.bindPopup(popup_6f2e426e1c0d2fb25916c881430896b0)
+        ;
+
+        
+    
+    
+            circle_67db1488bcf4ea90fe299af9fb22ff14.bindTooltip(
+                `<div>
+                     Schlossberg-Komplex – grobe Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_9479be83a252f70b0749071c5a70fd67.addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            var feature_group_208853f61f1d29181c691bb858c50ed6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_49ebe81c092f4724b1ea91282739bc83 = L.marker(
+                [49.31975, 7.35198],
+                {
+}
+            ).addTo(feature_group_208853f61f1d29181c691bb858c50ed6);
+        
+    
+            var icon_9bd9f39b99d4c0770249e3cde019ed9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "question-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d41a3f5c788bae5366167951db1774a5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f89d38a5bc540ae506fe39d07919b773 = $(`<div id="html_f89d38a5bc540ae506fe39d07919b773" style="width: 100.0%; height: 100.0%;"><b>Eure beobachtete Fundstelle</b><br><br>Koordinaten: 49.31975, 7.35198<br>Beobachtung: zwei verschlossene, bunkerähnliche Öffnungen.<br><br>Die Lage passt zum historisch erwähnten Bereich. Eine Verbindung zum Regierungsbunker oder den Schlossberghöhlen ist aber noch nicht belegt.<br><br><a href='https://maps.apple.com/?ll=49.31975,7.35198&q=Beobachtete%20Eing%C3%A4nge%20Lagerstra%C3%9Fe%20Homburg' target='_blank'>In Apple Karten öffnen</a></div>`)[0];
+                popup_d41a3f5c788bae5366167951db1774a5.setContent(html_f89d38a5bc540ae506fe39d07919b773);
+            
+        
+
+        marker_49ebe81c092f4724b1ea91282739bc83.bindPopup(popup_d41a3f5c788bae5366167951db1774a5)
+        ;
+
+        
+    
+    
+            marker_49ebe81c092f4724b1ea91282739bc83.bindTooltip(
+                `<div>
+                     Eure Fundstelle – noch unbestätigt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_49ebe81c092f4724b1ea91282739bc83.setIcon(icon_9bd9f39b99d4c0770249e3cde019ed9a);
+            
+    
+            feature_group_208853f61f1d29181c691bb858c50ed6.addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            var feature_group_411ccbd2a56ea0eef0656236dcd0a2be = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_889bc166d378bf8a4f62c5fc4e1a86e2 = L.marker(
+                [49.3197, 7.3543],
+                {
+}
+            ).addTo(feature_group_411ccbd2a56ea0eef0656236dcd0a2be);
+        
+    
+            var icon_11162e390884657f7c417846e965a9d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e92622108e481c22e07d20a7a4845838 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4ccfff9cea473196f29eae21f50b9b81 = $(`<div id="html_4ccfff9cea473196f29eae21f50b9b81" style="width: 100.0%; height: 100.0%;"><b>Ruine Hohenburg / Schlossberg</b><br><br>Historischer Orientierungspunkt oberhalb des Höhlensystems. Kein Bunkereingang.<br><br><a href='https://maps.apple.com/?ll=49.3197,7.3543&q=Ruine%20Hohenburg%20Homburg' target='_blank'>In Apple Karten öffnen</a></div>`)[0];
+                popup_e92622108e481c22e07d20a7a4845838.setContent(html_4ccfff9cea473196f29eae21f50b9b81);
+            
+        
+
+        marker_889bc166d378bf8a4f62c5fc4e1a86e2.bindPopup(popup_e92622108e481c22e07d20a7a4845838)
+        ;
+
+        
+    
+    
+            marker_889bc166d378bf8a4f62c5fc4e1a86e2.bindTooltip(
+                `<div>
+                     Ruine Hohenburg – Orientierung
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_889bc166d378bf8a4f62c5fc4e1a86e2.setIcon(icon_11162e390884657f7c417846e965a9d0);
+            
+    
+            var marker_1e7171ce26bf6352396ce11d944aa55a = L.marker(
+                [49.32075, 7.35485],
+                {
+}
+            ).addTo(feature_group_411ccbd2a56ea0eef0656236dcd0a2be);
+        
+    
+            var icon_573cf8619e54128b88617776ab748ef8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d21b1cacc1ab8f6ab656754dced48dd = L.popup({
+  "maxWidth": 330,
+});
+
+        
+            
+                var html_dce531a516dd01b627817a0740a86cf9 = $(`<div id="html_dce531a516dd01b627817a0740a86cf9" style="width: 100.0%; height: 100.0%;"><b>Schlossberghotel</b><br><br>Nur Orientierungspunkt. Ein angeblicher Zugang „hinter dem Hotel“ wird bewusst nicht als exakter Pin gesetzt, weil keine verlässliche Koordinate vorliegt.<br><br><a href='https://maps.apple.com/?ll=49.32075,7.35485&q=Schlossberghotel%20Homburg' target='_blank'>In Apple Karten öffnen</a></div>`)[0];
+                popup_3d21b1cacc1ab8f6ab656754dced48dd.setContent(html_dce531a516dd01b627817a0740a86cf9);
+            
+        
+
+        marker_1e7171ce26bf6352396ce11d944aa55a.bindPopup(popup_3d21b1cacc1ab8f6ab656754dced48dd)
+        ;
+
+        
+    
+    
+            marker_1e7171ce26bf6352396ce11d944aa55a.bindTooltip(
+                `<div>
+                     Schlossberghotel – Orientierung
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1e7171ce26bf6352396ce11d944aa55a.setIcon(icon_573cf8619e54128b88617776ab748ef8);
+            
+    
+            feature_group_411ccbd2a56ea0eef0656236dcd0a2be.addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+        
+    
+            var measure_control_1f7038d97442ca90cfac61caaa2573ef = new L.Control.Measure(
+                {
+  "position": "topleft",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_8dc6562a9f623e43b7da8c56ef82b658.addControl(measure_control_1f7038d97442ca90cfac61caaa2573ef);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var mouse_position_6d99b52bf953bbe626c20343ae66f0c6 = new L.Control.MousePosition(
+                {
+  "position": "bottomright",
+  "separator": ", ",
+  "emptyString": "Unavailable",
+  "lngFirst": false,
+  "numDigits": 6,
+  "prefix": "Koordinaten:",
+}
+            );
+            mouse_position_6d99b52bf953bbe626c20343ae66f0c6.options["latFormatter"] =
+                undefined;
+            mouse_position_6d99b52bf953bbe626c20343ae66f0c6.options["lngFormatter"] =
+                undefined;
+            map_8dc6562a9f623e43b7da8c56ef82b658.addControl(mouse_position_6d99b52bf953bbe626c20343ae66f0c6);
+        
+    
+            var layer_control_3508a5510a95c5ca9de4d5ab48c43304_layers = {
+                base_layers : {
+                    "Satellit" : tile_layer_59f9b2188cebee18cbe787902f006597,
+                    "Stra\u00dfenkarte" : tile_layer_f2bdc21389d2aca336f563bc30cbfb5d,
+                },
+                overlays :  {
+                    "Belegt / offiziell" : feature_group_f2d55035afccde70012746eb40d809ec,
+                    "Historisch erw\u00e4hnt \u2013 nur Bereich" : feature_group_9479be83a252f70b0749071c5a70fd67,
+                    "Von euch beobachtet" : feature_group_208853f61f1d29181c691bb858c50ed6,
+                    "Orientierung" : feature_group_411ccbd2a56ea0eef0656236dcd0a2be,
+                },
+            };
+            let layer_control_3508a5510a95c5ca9de4d5ab48c43304 = L.control.layers(
+                layer_control_3508a5510a95c5ca9de4d5ab48c43304_layers.base_layers,
+                layer_control_3508a5510a95c5ca9de4d5ab48c43304_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_8dc6562a9f623e43b7da8c56ef82b658);
+
+        
+    
+            map_8dc6562a9f623e43b7da8c56ef82b658.fitBounds(
+                [[49.3162, 7.3492], [49.3222, 7.357]],
+                {}
+            );
+        
+</script>
+</html>
